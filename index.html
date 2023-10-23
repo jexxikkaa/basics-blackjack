@@ -74,7 +74,7 @@
       }
 
       #container {
-        background-color: pink;
+        background-color: rgb(177, 177, 177);
         margin: 40px auto;
         max-width: 800px;
         padding: 38px 31px;
@@ -101,54 +101,49 @@
         padding: 20px;
         width: 100%;
       }
-
-      .logo-img {
-        height: 49px;
-        position: relative;
-        top: 22px;
-      }
-
-      /* increase header font size on wider screens */
-      @media screen and (min-width: 600px) {
-        .header {
-          font-size: 2rem;
-        }
-      }
     </style>
-
   </head>
 
+  <!-- The <body> element defines the document's body, and is a container for all the visible contents that will be rendered by the browser.  -->
   <body>
-    <h1 class="header">
-      <img class="logo-img" src="https://firebasestorage.googleapis.com/v0/b/ftbc11-sample.appspot.com/o/images%2F1-PRIMARY_CRIMSON.png?alt=media&token=ce9e8333-2a45-44be-adb2-1f1bf054adf7" />
-      Rocket Academy
-      <img class="logo-img" src="https://firebasestorage.googleapis.com/v0/b/ftbc11-sample.appspot.com/o/images%2F1-PRIMARY_CRIMSON.png?alt=media&token=ce9e8333-2a45-44be-adb2-1f1bf054adf7" />
-    </h1>
-    <h1 class="header">♣️ Basics - Blackjack ♠️</h1>
+    <!-- The <h1> element defines a large heading. There are 6 pre-set header elements, <h1> to <h6> -->
+    <h1 id="header">BlackJack!🂡</h1>
+    <!-- The <div> tag defines a division or a section in an HTML document, and is commonly use as a "container" for nested HTML elements. -->
     <div id="container">
-      <p>Input:</p>
-      <input id="input-field" />
-      <br />
-      <button id="submit-button">Submit</button>
+      <p> Got too much money? Come lose it all in BlackJack! </p>
+      <p>Generate and shuffle the deck by pressing the "Card deck" button and we can start drawing cards after!</p>
+      <!-- <p>Input:</p> -->
+      <!-- The self-closing <input /> tag represents a field for a user to enter input. -->
+      <!-- <input id="input-field" /> -->
+      <!-- The self-closing <br /> tag represents a line break - a line's worth of spacing before dispalying the next element. -->
+      <!-- <br /> -->
+      <!-- The <button> tag represents.. you guessed it! a button. -->
+      <button id="submit-button">Card deck</button> <button id="done-button">Done</button>
       <p>Output:</p>
       <div id="output-div"></div>
     </div>
-    <!-- Import program logic -->
+    <!-- Everything below this is incorporating JavaScript programming logic into the webpage. -->
+    <!-- The script tag encloses JavaScript syntax for the browser to interpret programtically -->
+    <!-- The following line imports all code written in the script.js file -->
     <script src="script.js"></script>
     <!-- Define button click functionality -->
     <script>
+      // Declare and define a variable that represents the Submit Button
       var button = document.querySelector("#submit-button");
+      // When the submit button is clicked, access the text entered by the user in the input field
+      // And pass it as an input parameter to the main function as defined in script.js
       button.addEventListener("click", function () {
         // Set result to input value
         var input = document.querySelector("#input-field");
-        var result = main(input.value);
+        // Store the output of main() in a new variable
+        var result = main();
 
         // Display result in output element
         var output = document.querySelector("#output-div");
         output.innerHTML = result;
 
         // Reset input value
-        input.value = "";
+        // input.value = "";
       });
     </script>
   </body>

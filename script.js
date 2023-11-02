@@ -8,6 +8,17 @@ let computerHand = [];
 let counterNumber = "";
 var doneButton = document.querySelector("#done-button");
 
+var myImages = {
+  win: '<img src = "https://media3.giphy.com/media/VzH7r2UUqwas8HZ3jd/200.webp"/>',
+  lose: '<img src = "https://media4.giphy.com/media/jTAkn6hKyy2esWjOOZ/200.webp"/>',
+  tie: '<img src = "https://media4.giphy.com/media/h5WUsjFmE6329tkcAz/200.webp"/>',
+  start: '<img src = "https://media4.giphy.com/media/9xcBrf9lGQBXNBkjno/200w.webp"/>',
+  stop: '<img src = "https://media2.giphy.com/media/uBn5A3rxwD7N8nZvlw/200.webp"/>',
+  No: '<img src = "https://media3.giphy.com/media/oy9hVQl8Hq7o8T3tER/200w.webp"/>',
+  work: '<img src = "https://media0.giphy.com/media/9PwWklO9tSELtIhBka/200w.webp"/>',
+  end: '<img src = "https://media1.giphy.com/media/xBzJL8IAjDktZywKee/200.webp"/>',
+};
+
 doneButton.addEventListener("click", function () {
   var result = evaluateHands();
   displayResult(result);
@@ -24,7 +35,7 @@ var main = function () {
     cardDeck = makeDeck ();
     shuffleDeck (cardDeck);
     console.log (cardDeck);
-    return `card deck has been generated and shuffled. Press "card deck" to draw cards.`
+    return `card deck has been generated and shuffled. Press "card deck" to draw cards. <br> ${myImages.start}`
 
   }
   
@@ -39,12 +50,12 @@ var main = function () {
         console.log("Computer's hand:", getHandInfo(computerHand)); 
         }
         console.log (cardDeck);
-      return `Both players cards are drawn, your cards are ${getHandInfo (playerHand)}! Press "card deck" if you wish to draw another card. Otherwise press "done" to compare hands.`
+      return `Both players cards are drawn, your cards are ${getHandInfo (playerHand)}! Press "card deck" if you wish to draw another card. Otherwise press "done" to compare hands. <br> ${myImages.No}`
     }
     else {
       console.log("Computer's hand:", getHandInfo(computerHand));
       console.log (cardDeck);
-      return `Both players cards are drawn, your cards are ${getHandInfo (playerHand)}! Press "card deck" if you wish to draw another card. Otherwise press "done" to compare hands.`
+      return `Both players cards are drawn, your cards are ${getHandInfo (playerHand)}! Press "card deck" if you wish to draw another card. Otherwise press "done" to compare hands. <br> ${myImages.No}`
 
     }
   }
@@ -53,16 +64,16 @@ var main = function () {
       let pdrawnCards = playerDraws(1); 
       playerHand = playerHand.concat(pdrawnCards);
     
-    return `Your current cards are ${getHandInfo (playerHand)}, if you are happy with your hand, please press "done" to compare hands. Otherwise, please press "card deck" again to draw another card.`
+    return `Your current cards are ${getHandInfo (playerHand)}, if you are happy with your hand, please press "done" to compare hands. Otherwise, please press "card deck" again to draw another card. <br> ${myImages.No}`
   }
 
   else if ((cardDeck.length == 0) && (cardDeck !== 0) && (playerHand.length !== 0)) {
-    return `Wtf you doing? There aint any more cards in the deck.`
+    return `Wtf you doing? There aint any more cards in the deck. <br> ${myImages.stop}`
 
   }
 
 
-  return `Your current cards are ${getHandInfo (playerHand)}, if you are happy with your hand, please press "done" to compare hands. Otherwise, please press "card deck" again to draw another card.`
+  return `Your current cards are ${getHandInfo (playerHand)}, if you are happy with your hand, please press "done" to compare hands. Otherwise, please press "card deck" again to draw another card. <br> ${myImages.work}`
 
   }
 
@@ -146,7 +157,7 @@ function evaluateHands () {
 
   if (playerSum > 21) {
     if (computerSum > 21 || computerSum == playerSum) {
-      var results =  `It's a tie. Both players busted. Your cards are ${getHandInfo(playerHand)} and computer cards are ${getHandInfo(computerHand)}`;
+      var results =  `It's a tie. Both players busted. Your cards are ${getHandInfo(playerHand)} and computer cards are ${getHandInfo(computerHand)} <br> ${myImages.tie}`;
       playerHand = [];
       computerHand = [];
       cardDeck = [];
@@ -154,7 +165,7 @@ function evaluateHands () {
     }
     else {
 
-      var results =  `You lost. Your cards are ${getHandInfo(playerHand)} and computer cards are ${getHandInfo(computerHand)}`;
+      var results =  `You lost. Your cards are ${getHandInfo(playerHand)} and computer cards are ${getHandInfo(computerHand)} <br> ${myImages.lose}`;
       playerHand = [];
       computerHand = [];
       cardDeck = [];
@@ -162,7 +173,7 @@ function evaluateHands () {
     }
   } 
   else if (computerSum > 21) {
-    var results = `You won. Your cards are ${getHandInfo(playerHand)} and computer cards are ${getHandInfo(computerHand)}`
+    var results = `You won. Your cards are ${getHandInfo(playerHand)} and computer cards are ${getHandInfo(computerHand)} <br> ${myImages.win}`
     playerHand = [];
     computerHand = [];
     cardDeck = [];
@@ -170,7 +181,7 @@ function evaluateHands () {
   }
 
     else if (playerSum > computerSum) {
-    var results = `You won. Your cards are ${getHandInfo(playerHand)} and computer cards are ${getHandInfo(computerHand)}`;
+    var results = `You won. Your cards are ${getHandInfo(playerHand)} and computer cards are ${getHandInfo(computerHand)} <br> ${myImages.win}`;
     playerHand = [];
     computerHand = [];
     cardDeck = [];
@@ -178,14 +189,14 @@ function evaluateHands () {
   } 
   
   else if (computerSum > playerSum) {
-    var results = `You lost. Your cards are ${getHandInfo(playerHand)} and computer cards are ${getHandInfo(computerHand)}`;
+    var results = `You lost. Your cards are ${getHandInfo(playerHand)} and computer cards are ${getHandInfo(computerHand)} <br> ${myImages.lose}`;
     playerHand = [];
     computerHand = [];
     cardDeck = [];
     return results;
   }
   else if (computerSum == playerSum){
-    var results = `It's a tie. Your cards are ${getHandInfo(playerHand)} and computer cards are ${getHandInfo(computerHand)}`;
+    var results = `It's a tie. Your cards are ${getHandInfo(playerHand)} and computer cards are ${getHandInfo(computerHand)} <br> ${myImages.tie}`;
     playerHand = [];
     computerHand = [];
      cardDeck = [];
@@ -194,7 +205,7 @@ function evaluateHands () {
   }
 }
 else {
-  return `Round has ended, press "Card deck" to start new round.`
+  return `Round has ended, press "Card deck" to start new round. <br> ${myImages.end}`
 
 }
 }

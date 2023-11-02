@@ -55,11 +55,11 @@
         margin-left: 30px;
         margin-right: 30px;
         background-color:white;
-        color: black; /* sets the font color */
-        background-image: url(""); /* The image used */
-        background-position: center; /* Center the image */
+        color: rgb(0, 0, 0); /* sets the font color */
+        background-image: url("https://media4.giphy.com/media/2A6uZ0XlO5UIy6OiEM/200.webp"), url("https://media3.giphy.com/media/455cA4lrbxf2awroM9/200w.webp"), url("https://img1.picmix.com/output/stamp/normal/0/0/1/7/2107100_6599e.gif"); /* The image used */
+        background-position: bottom right, bottom left, center; /* Center the image */
         background-repeat: no-repeat; /* Do not repeat the image */
-        background-size: cover; /* Resize the background image to cover the entire container */
+        background-size: auto, auto, cover;
       }
 
       #output-div img{
@@ -74,7 +74,7 @@
       }
 
       #container {
-        background-color: rgb(177, 177, 177);
+        background-color: rgb(80, 210, 250);
         margin: 40px auto;
         max-width: 800px;
         padding: 38px 31px;
@@ -107,7 +107,7 @@
   <!-- The <body> element defines the document's body, and is a container for all the visible contents that will be rendered by the browser.  -->
   <body>
     <!-- The <h1> element defines a large heading. There are 6 pre-set header elements, <h1> to <h6> -->
-    <h1 id="header">BlackJack!🂡</h1>
+    <h1 id="header">Capoo BlackJack!🂡</h1>
     <!-- The <div> tag defines a division or a section in an HTML document, and is commonly use as a "container" for nested HTML elements. -->
     <div id="container">
       <p> Got too much money? Come lose it all in BlackJack! </p>
@@ -120,7 +120,9 @@
       <!-- The <button> tag represents.. you guessed it! a button. -->
       <button id="submit-button">Card deck</button> <button id="done-button">Done</button>
       <p>Output:</p>
-      <div id="output-div"></div>
+      <div id="output-div">
+      <img src = "https://media0.giphy.com/media/IEm8kcqLVCctHJ1kWm/giphy.webp"/>
+      </div>
     </div>
     <!-- Everything below this is incorporating JavaScript programming logic into the webpage. -->
     <!-- The script tag encloses JavaScript syntax for the browser to interpret programtically -->
